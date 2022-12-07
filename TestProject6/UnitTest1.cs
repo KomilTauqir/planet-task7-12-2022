@@ -20,10 +20,11 @@ namespace TestProject6
         public void explore_planet()
         {
             new Toolbar(driver).ClickPlanetsButton();
-
-            var planet = new Planet(driver);
-            planet.ExplorePlanet("Earth");
-            String popupmsgtext = planet.popupmsgmethod();
+            string planetname = "Earth";
+            var planetpage = new PlanetPage(driver);
+            planetpage.ExplorePlanet(planetname);
+            string popupmsgtext= PlanetPage.PopupMsgMethodForPage(driver,planetname);
+            
             Assert.AreEqual(expected: "Exploring Earth", actual: popupmsgtext);
         }
         [TestMethod]
